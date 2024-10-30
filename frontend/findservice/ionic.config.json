@@ -1,0 +1,7 @@
+{
+  "name": "findservice",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

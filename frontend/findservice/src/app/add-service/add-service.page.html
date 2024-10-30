@@ -1,0 +1,83 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Services</ion-title>
+    <ion-buttons slot="end">
+      <ion-button *ngIf="isUserAdminOrEmployee()" [routerLink]="['/order']" fill="outline" color="primary">
+        View Orders
+      </ion-button>
+      <ion-button [routerLink]="['/order-details']" fill="outline" color="secondary">
+        View Order Details
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-back-button 
+        [defaultHref]="isUserAdmin() ? 'home' : 'user'">
+      </ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="header-content">
+    <h1>Explore Our Services</h1>
+    <p>Discover beautifully crafted services</p>
+  </div>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" size-md="6" size-lg="4" *ngFor="let service of services">
+        <ion-card class="custom-card">
+          <ion-card-header>
+            <ion-card-title>{{ service.diplome }}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p>{{ service.description }}</p>
+            <p>
+              <strong>User:</strong> {{ service.user[0]?.FirstName }} {{ service.user[0]?.LastName }} <br />
+              <strong>Username:</strong> {{ service.user[0]?.Username }} <br />
+              <strong>Location:</strong> {{ service.user[0]?.Gouvernerat }} <br />
+              <strong>Address:</strong> {{ service.user[0]?.Adresse }}
+            </p>
+            <ion-button expand="block" fill="solid" color="primary" (click)="commander(service)">
+              Commander
+            </ion-button>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button *ngIf="isUserAdminOrEmployee()" (click)="openAddServiceModal()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
+
+<ion-modal [isOpen]="isModalOpen" (didDismiss)="dismissModal()">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Add Service</ion-title>
+        <ion-buttons slot="end">
+          <ion-button (click)="dismissModal()">Close</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+      <ion-item>
+        <ion-label position="floating">Diplome</ion-label>
+        <ion-input [(ngModel)]="serviceData.diplome"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Description</ion-label>
+        <ion-input [(ngModel)]="serviceData.description"></ion-input>
+      </ion-item>
+      <ion-button expand="block" (click)="addService()">Add Service</ion-button>
+    </ion-content>
+  </ng-template>
+</ion-modal>

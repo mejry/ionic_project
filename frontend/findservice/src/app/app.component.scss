@@ -1,0 +1,20 @@
+ion-app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+ion-split-pane {
+  flex: 1;
+}
+
+
+ion-footer {
+  margin-top: 80vh;
+ 
+  z-index: 10;
+  height: 60px;  /* Optional */
+}
+.footer{
+  height: auto;
+}

@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button 
+        [defaultHref]="isUserAdmin() ? 'home' : 'user'">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>Orders Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-list *ngIf="orders.length">
+    <ion-item *ngFor="let order of orders">
+      <ion-label>
+        <h2>Order ID: {{ order._id }}</h2>
+        <p>Status: {{ order.status }}</p>
+        
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  <p *ngIf="!orders.length">No confirmed orders found.</p>
+</ion-content>

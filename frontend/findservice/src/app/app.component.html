@@ -1,0 +1,48 @@
+<ion-app>
+ 
+   
+  <ion-menu content-id="main-content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-item routerLink="/home">Home</ion-item>
+        <ion-item routerLink="/about">About</ion-item>
+        <ion-item routerLink="/services">Services</ion-item>
+        <ion-item routerLink="/contact">Contact</ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+
+
+
+
+
+      <ion-tabs>
+        <ion-tab-bar slot="bottom">
+          <ion-tab-button tab="home" class="disabled-button">
+            <ion-icon name="home-outline"></ion-icon>
+            <ion-label>Home</ion-label>
+          </ion-tab-button>
+          
+
+          <ion-tab-button tab="commandes" [routerLink]="['/commandes']">
+            <ion-icon name="list-outline"></ion-icon>
+            <ion-label>Commandes</ion-label>
+          </ion-tab-button>
+
+          <ion-tab-button tab="profil" [routerLink]="['/profil']">
+            <ion-icon name="person-circle-outline"></ion-icon>
+            <ion-label>Profil</ion-label>
+          </ion-tab-button>
+        </ion-tab-bar>
+      </ion-tabs>
+  
+</ion-app>
+

@@ -1,0 +1,35 @@
+<ion-content class="login-page">
+  <div class="login-container">
+    <div class="login-header">
+      <h1>Welcome Back!</h1>
+      <p>Please login to your account</p>
+    </div>
+    
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input 
+        type="email" 
+        [(ngModel)]="loginData.Email" 
+        placeholder="Enter your email" 
+        required>
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Password</ion-label>
+      <ion-input 
+        type="password" 
+        [(ngModel)]="loginData.Password" 
+        placeholder="Enter your password" 
+        required>
+      </ion-input>
+    </ion-item>
+
+    <ion-button expand="block" color="primary" (click)="onLogin()">Login</ion-button>
+    <ion-button (click)="singup()">vers singup</ion-button>
+    <ion-text>
+      <p *ngIf="message">{{ message }}</p> 
+      <p>Don't have an account? <a href="/signup">Sign up here</a></p>
+    </ion-text>
+  </div>
+</ion-content>

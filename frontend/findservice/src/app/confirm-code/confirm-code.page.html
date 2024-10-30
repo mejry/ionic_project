@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/login"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Confirmer le code</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="confirm-code-content">
+    <h2>Confirmer le code</h2>
+    <p>Entrez le code de 4 chiffres que vous avez reçu.</p>
+
+    <div class="code-inputs">
+      <ion-input maxlength="1" type="number" [(ngModel)]="code[0]" (keyup)="moveFocus($event, 0)" #input0></ion-input>
+      <ion-input maxlength="1" type="number" [(ngModel)]="code[1]" (keyup)="moveFocus($event, 1)" #input1></ion-input>
+      <ion-input maxlength="1" type="number" [(ngModel)]="code[2]" (keyup)="moveFocus($event, 2)" #input2></ion-input>
+      <ion-input maxlength="1" type="number" [(ngModel)]="code[3]" (keyup)="moveFocus($event, 3)" #input3></ion-input>
+    </div>
+
+    <ion-button expand="block" (click)="confirmCode()">Confirmer</ion-button>
+
+    <div *ngIf="errorMessage" class="error-message">
+      <ion-text color="danger">{{ errorMessage }}</ion-text>
+    </div>
+  </div>
+</ion-content>
